@@ -8,25 +8,13 @@ $req->bindParam(':num', $num);
 $nb=$req->execute();
 
 
-echo '<div class="container mt-5 pt-5">';
-echo'<div class="row">
-        <div class="col mt-3">';
 if($nb ==1){
-    echo'<div class="alert alert-dismissible alert-success">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>La nationalité a bien été supprimée !</strong>
-            </div>';
+    $_SESSION['message']=["success" => "La nationalité a bien été supprimée !"];
 }else{
-    echo'<div class="alert alert-dismissible alert-danger">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Une erreur est survenue ! </strong>  
-            </div>';
+    $_SESSION['message']=["danger" => "La nationalité n'a pas été supprimée !"];
 }
-?>
-</div>
-</div>
-<div class='col'><a href='listeNationalites.php' class='btn btn-primary'>Revenir à la liste</a></div>
-</div>
+header('location: listeNationalites.php');
+exit();
 
-<?php include "footer.php" ?>
+
 
