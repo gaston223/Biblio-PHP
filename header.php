@@ -45,7 +45,7 @@
               <div class="dropdown-menu" aria-labelledby="download">
                 <a class="dropdown-item" href="listeNationalites.php">Liste des nationalités</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="formAjoutNationalite.php">Ajouter une nationalité</a>
+                <a class="dropdown-item" href="formNationalite.php?action=Ajouter">Ajouter une nationalité</a>
               </div>
         </li>
         

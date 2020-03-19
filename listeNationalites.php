@@ -1,7 +1,7 @@
 <?php 
     include "header.php" ;
     include "connexionPdo.php";
-    $req = $monPdo->prepare("select * from nationalite");
+    $req = $monPdo->prepare("select n.num, n.libelle as libNation, c.libelle as libContinent from nationalite n, continent c where n.numContinent=c.num order by n.libelle");
     $req->setFetchMode(PDO::FETCH_OBJ);
     $req->execute();
     $lesNationalites = $req->fetchAll();
@@ -37,7 +37,8 @@
             <thead>
                 <tr class="d-flex">
                 <th scope="col" class="col-md-2">Numéro</th>
-                <th scope="col" class="col-md-8">Libellé</th>
+                <th scope="col" class="col-md-4">Libellé</th>
+                <th scope="col" class="col-md-4">Continent</th>
                 <th scope="col" class="col-md-2">Actions</th>
                 </tr>
             </thead>
@@ -46,7 +47,8 @@
                 foreach($lesNationalites as $nationalite){
                   echo"<tr class='d-flex'>";
                    echo" <td class='col-md-2'>$nationalite->num</th>";
-                   echo" <td class='col-md-8' >$nationalite->libelle</td>";
+                   echo" <td class='col-md-4' >$nationalite->libNation</td>";
+                   echo" <td class='col-md-4' >$nationalite->libContinent</td>";
                    echo" <td class='col-md-2'>
                    <a href='formNationalite.php?action=Modifier&num=$nationalite->num' class='btn btn-warning'> <i class='fas fa-edit'></i></a>
                    <a href='#modal-delete' data-toggle='modal' data-message='Êtes-vous sur de supprimer la nationalité ?' data-delete='supprimerNationalite.php?num=$nationalite->num' class='btn btn-danger'> <i class='fas fa-trash'></i></a>

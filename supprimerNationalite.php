@@ -8,8 +8,8 @@ $req->bindParam(':num', $num);
 $nb=$req->execute();
 
 
-if($nb ==1){
-    $_SESSION['message']=["success" => "La nationalité a bien été supprimée !"];
+    if($nb ==1){
+    $_SESSION['message']=["primary" => "La nationalité a bien été supprimée !"];
 }else{
     $_SESSION['message']=["danger" => "La nationalité n'a pas été supprimée !"];
 }

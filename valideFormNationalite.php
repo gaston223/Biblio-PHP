@@ -4,13 +4,16 @@
     $action = $_GET['action'];
     $num=$_POST['num']; //je recupère l'id du formulaire
     $libelle=$_POST['libelle']; //je recupère le libelle du formulaire
+    $continent=$_POST['continent']; //je recupère le continent du formulaire
 if($action == "Modifier" ){
-    $req = $monPdo->prepare("update nationalite set libelle = :libelle where num = :num");
+    $req = $monPdo->prepare("update nationalite set libelle = :libelle, numContinent= :continent where num = :num");
     $req->bindParam(':num', $num);
     $req->bindParam(':libelle', $libelle);
+    $req->bindParam(':continent', $continent);
 }else{
-    $req = $monPdo->prepare("insert into nationalite(libelle) values(:libelle)");
+    $req = $monPdo->prepare("insert into nationalite(libelle, numContinent) values(:libelle, :continent)");
     $req->bindParam(':libelle', $libelle);
+    $req->bindParam(':continent', $continent);
 }
 $nb=$req->execute();
 
