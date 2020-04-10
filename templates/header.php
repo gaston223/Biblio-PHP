@@ -8,7 +8,7 @@
     <meta name="generator" content="Jekyll v3.8.6">
     <title>Biblio PHP </title>
 
-    <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
       <!--Font Awesome-->
       <script src="https://kit.fontawesome.com/3a35c19d1d.js" crossorigin="anonymous"></script>
   </head>
@@ -28,7 +28,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Ajouter un genre</a>
               </div>
-        </li>   
+        </li>
 
          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download"><i class="fas fa-male"></i>  Gestion des auteurs <span class="caret"></span></a>
@@ -38,13 +38,13 @@
                 <a class="dropdown-item" href="#">Ajouter un auteur</a>
               </div>
         </li>
-        
+
         <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download"><i class="far fa-flag"></i>  Gestion des nationalités <span class="caret"></span></a>
               <div class="dropdown-menu" aria-labelledby="download">
-                <a class="dropdown-item" href="listeNationalites.php">Liste des nationalités</a>
+                <a class="dropdown-item" href="app.php?uc=nationalites&action=list">Liste des nationalités</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="formNationalite.php?action=Ajouter">Ajouter une nationalité</a>
+                <a class="dropdown-item" href="app.php?uc=nationalites&action=add">Ajouter une nationalité</a>
               </div>
         </li>
 
@@ -56,7 +56,7 @@
                 <a class="dropdown-item" href="app.php?uc=continents&action=add">Ajouter un continent</a>
             </div>
         </li>
-        
+
     </ul>
   </div>
 </nav>
