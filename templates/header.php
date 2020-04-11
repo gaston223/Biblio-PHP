@@ -14,7 +14,7 @@
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
-  <a class="navbar-brand" href="index.php">Biblio PHP</a>
+  <a class="navbar-brand" href="app.php">Biblio PHP</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -24,18 +24,18 @@
        <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download"><i class="fas fa-sitemap"></i>  Gestion des genres <span class="caret"></span></a>
               <div class="dropdown-menu" aria-labelledby="download">
-                <a class="dropdown-item" href="#">Liste des genres</a>
+                <a class="dropdown-item" href="app.php?uc=genres&action=list">Liste des genres</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Ajouter un genre</a>
+                <a class="dropdown-item" href="app.php?uc=genres&action=add">Ajouter un genre</a>
               </div>
         </li>
 
          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download"><i class="fas fa-male"></i>  Gestion des auteurs <span class="caret"></span></a>
               <div class="dropdown-menu" aria-labelledby="download">
-                <a class="dropdown-item" href="#">Liste des auteurs</a>
+                <a class="dropdown-item" href="app.php?uc=auteurs&action=list">Liste des auteurs</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Ajouter un auteur</a>
+                <a class="dropdown-item" href="app.php?uc=auteurs&action=add">Ajouter un auteur</a>
               </div>
         </li>
 
@@ -61,21 +61,3 @@
   </div>
 </nav>
 
-  <?php
-  if(!empty($_SESSION['message'])) {
-      $mesMessages = $_SESSION['message'];
-      foreach ($mesMessages as $key => $message) {
-          echo '
-  <div class="container pt-5">
-      <div class="alert alert-' . $key . ' alert-dismissible fade show" role="alert">
-          ' . $message . '
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-  </div>
-  ';
-      }
-      $_SESSION['message'] = [];
-  }
-?>
