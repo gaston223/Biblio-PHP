@@ -1,13 +1,13 @@
-<div class="container mt-5">
+<div class="container pt-5 mt-5">
     <div class="row pt-3">
         <div class="col-9">
             <h2>Liste des livres</h2>
         </div>
-        <div class="col-3"><a href="index.php?uc=livres&action=add" class='btn btn-success'><i
+        <div class="col-3"><a href="app.php?uc=livres&action=add" class='btn btn-success'><i
                     class="fas fa-plus-circle"></i> Créer un livre</a> </div>
     </div>
 
-    <form id="formRecherche" action="index.php?uc=livres&action=list" method="post"
+    <form id="formRecherche" action="app.php?uc=livres&action=list" method="post"
         class="border border-primary rounded p-3 mt-3 mb-3">
         <div class="row">
             <div class="col">
@@ -16,7 +16,7 @@
             </div>
             <div class="col">
                 <select name="auteur" class="form-control">
-                    <?php 
+                    <?php
                         echo "<option value='Tous'>Tous les auteurs</option>";
                         foreach($lesAuteurs as $auteur){
                             $selection=$auteur->numero == $auteurSel ? 'selected' : '';
@@ -27,7 +27,7 @@
             </div>
             <div class="col">
                 <select name="genre" class="form-control">
-                    <?php 
+                    <?php
                         echo "<option value='Tous'>Tous les genres</option>";
                         foreach($lesGenres as $genre){
                             $selection=$genre->getNum() == $genreSel ? 'selected' : '';
@@ -59,7 +59,7 @@
         </thead>
         <tbody>
             <?php
-            
+
     foreach($lesLivres as $livre){
         echo "<tr class='d-flex'>";
         echo "<td class='col-md-1'>".$livre->isbn."</td>";
@@ -72,7 +72,7 @@
         echo "<td class='col-md-1'>".$livre->libGenre."</td>";
         echo "<td class='col-md-2'>
             <a href='index.php?uc=livres&action=update&num=". $livre->num ."' class='btn btn-primary'><i class='fas fa-pen'></i></a>
-            <a href='#modalSuppression' data-toggle='modal' data-message='Voulez vous supprimer ce livre ?' data-suppression='index.php?uc=livres&action=delete&num=".$livre->num."' class='btn btn-danger'><i class='far fa-trash-alt'></i></a>
+            <a href='#modal-delete' data-toggle='modal' data-message='Voulez vous supprimer ce livre ?' data-delete='index.php?uc=livres&action=delete&num=".$livre->num."' class='btn btn-danger'><i class='far fa-trash-alt'></i></a>
         </td>";
         echo "</tr>";
     }

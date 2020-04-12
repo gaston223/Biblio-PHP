@@ -210,7 +210,10 @@ class Auteur {
         return $req->execute();
     }
 
-        public static function nombreAuteurs():int
+    /**
+     * @return int
+     */
+    public static function nombreAuteurs():int
     {
         $texteReq="select count(*) as 'nb' from auteur";
         $req=MonPdo::getInstance()->prepare($texteReq);

@@ -4,6 +4,7 @@
  include "models/Nationalite.php";
  include "models/Genre.php";
  include "models/Auteur.php";
+ include "models/Livre.php";
  include "models/monPdo.php";
  include("templates/messagesFlash.php");
 
@@ -18,6 +19,8 @@
       case 'genres' : include ('controllers/GenreController.php');
          break;
       case 'auteurs' : include ('controllers/AuteurController.php');
+         break;
+      case 'livres' : include ('controllers/LivreController.php');
          break;
 
 

@@ -1,71 +1,84 @@
-<main role="main">
+<script>
+    window.onload = function() {
 
+        var chart = new CanvasJS.Chart("chartContainer", {
+            theme: "light2", // "light1", "light2", "dark1", "dark2"
+            exportEnabled: true,
+            animationEnabled: true,
+            title: {
+                text: ""
+            },
+            data: [{
+                type: "pie",
+                startAngle: 25,
+                toolTipContent: "<b>{label}</b>: {y}%",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - {y}%",
+                dataPoints: <?php echo json_encode(\models\Livre::livreParGenre(), JSON_NUMERIC_CHECK) ?>
+            }]
+        });
+        chart.render();
+
+    }
+</script>
+
+<main role="main">
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron container mt-5">
         <div class="container">
-            <h1 class="display-3">Hello, world!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+<!--            <h1 class="display-3">ADMIN</h1>-->
+            <h3 class="display-4">Bienvenue sur l'interface d'administration de la bibliothèque !</h3>
             <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         </div>
     </div>
 
     <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-            <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div>
-        </div>
-
         <hr>
-
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card border-primary mb-3" style="max-width: 20rem;">
-                        <div class="card-header">Header</div>
+                <div class="col-md-8" style="height: 600px">
+                    <div class="card border-primary mb-3"  style="height: 600px">
+                        <div class="card-header text-center h4">Statistiques des livres par genres</div>
                         <div class="card-body">
-                            <h4 class="card-title">Primary card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text" id="chartContainer"></p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="card border-primary mb-3" style="max-width: 20rem;">
-                        <div class="card-header">Header</div>
-                        <div class="card-body">
-                            <h4 class="card-title">Primary card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="col-md-4"  style="height: 600px">
+                    <div class="card border-primary mb-3"  style="height: 600px">
+                        <div class="card-header text-center h4">Statistiques générales</div>
+                        <div class="card-body mt-5">
+                            <h4 class="card-title text-center">
+                                <a href="app.php?uc=livres&action=list">
+                                    <span class="badge badge-success"><?php echo \models\Livre::nombreLivres(); ?></span>
+                               livres </a>
+                            </h4>
+                            <hr>
+                            <h4 class="card-title text-center">
+                                <a href="app.php?uc=auteurs&action=list">
+                                    <span class="badge badge-success"><?php echo \models\Auteur::nombreAuteurs(); ?></span>
+                                    auteurs </a>
+                            </h4>
+                            <hr>
+
+                            <h4 class="card-title text-center">
+                                <a href="app.php?uc=genres&action=list">
+                                    <span class="badge badge-success"><?php echo \models\Genre::nombreGenres(); ?></span>
+                                    genres</a>
+                            </h4>
+                            <hr>
+
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="card border-primary mb-3" style="max-width: 20rem;">
-                        <div class="card-header">Header</div>
-                        <div class="card-body">
-                            <h4 class="card-title">Primary card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
 
     </div> <!-- /container -->
-
 </main>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>

@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>Biblio PHP </title>
+    <title>Biblio ADMIN </title>
 
     <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
       <!--Font Awesome-->
@@ -14,13 +14,23 @@
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
-  <a class="navbar-brand" href="app.php">Biblio PHP</a>
+  <a class="navbar-brand" href="app.php">Biblio-Admin</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download"><i class="fas fa-book"></i>  Gestion des livres <span class="caret"></span></a>
+            <div class="dropdown-menu" aria-labelledby="download">
+                <a class="dropdown-item" href="app.php?uc=livres&action=list">Liste des livres</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="app.php?uc=livres&action=add">Ajouter un livre</a>
+            </div>
+        </li>
+
        <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download"><i class="fas fa-sitemap"></i>  Gestion des genres <span class="caret"></span></a>
               <div class="dropdown-menu" aria-labelledby="download">

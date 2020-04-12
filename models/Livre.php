@@ -1,4 +1,6 @@
-<?php 
+<?php
+namespace models;
+use PDO;
 
 class Livre {
 
@@ -8,7 +10,7 @@ class Livre {
      * @var int
      */
     private $num;
-    
+
     /**
      * ISBN du livre
      *
@@ -22,7 +24,7 @@ class Livre {
      * @var string
      */
     private $titre;
-    
+
     /**
      * prix du livre
      *
@@ -69,7 +71,7 @@ class Livre {
      * Get numéro du livre
      *
      * @return  int
-     */ 
+     */
     public function getNum() :int
     {
         return $this->num;
@@ -81,7 +83,7 @@ class Livre {
      * @param  int  $num  numéro du livre
      *
      * @return  self
-     */ 
+     */
     public function setNum(int $num) :self
     {
         $this->num = $num;
@@ -93,7 +95,7 @@ class Livre {
      * Get iSBN du livre
      *
      * @return  string
-     */ 
+     */
     public function getIsbn() :string
     {
         return $this->isbn;
@@ -105,7 +107,7 @@ class Livre {
      * @param  string  $ISBN  ISBN du livre
      *
      * @return  self
-     */ 
+     */
     public function setIsbn(string $ISBN) :self
     {
         $this->isbn = $ISBN;
@@ -117,7 +119,7 @@ class Livre {
      * Get titre du livre
      *
      * @return  string
-     */ 
+     */
     public function getTitre():string
     {
         return $this->titre;
@@ -129,7 +131,7 @@ class Livre {
      * @param  string  $titre  titre du livre
      *
      * @return  self
-     */ 
+     */
     public function setTitre(string $titre) :self
     {
         $this->titre = $titre;
@@ -141,7 +143,7 @@ class Livre {
      * Get prix du livre
      *
      * @return  int
-     */ 
+     */
     public function getPrix() :int
     {
         return $this->prix;
@@ -153,7 +155,7 @@ class Livre {
      * @param  int  $prix  prix du livre
      *
      * @return  self
-     */ 
+     */
     public function setPrix(int $prix) :self
     {
         $this->prix = $prix;
@@ -165,7 +167,7 @@ class Livre {
      * Get editeur du livre
      *
      * @return  string
-     */ 
+     */
     public function getEditeur():string
     {
         return $this->editeur;
@@ -177,7 +179,7 @@ class Livre {
      * @param  string  $editeur  editeur du livre
      *
      * @return  self
-     */ 
+     */
     public function setEditeur(string $editeur):self
     {
         $this->editeur = $editeur;
@@ -189,7 +191,7 @@ class Livre {
      * Get année de publication du livre
      *
      * @return  int
-     */ 
+     */
     public function getAnnee():int
     {
         return $this->annee;
@@ -201,7 +203,7 @@ class Livre {
      * @param  int  $annee  année de publication du livre
      *
      * @return  self
-     */ 
+     */
     public function setAnnee(int $annee):self
     {
         $this->annee = $annee;
@@ -213,7 +215,7 @@ class Livre {
      * Get langue du livre
      *
      * @return  string
-     */ 
+     */
     public function getLangue():string
     {
         return $this->langue;
@@ -225,7 +227,7 @@ class Livre {
      * @param  string  $langue  Langue du livre
      *
      * @return  self
-     */ 
+     */
     public function setLangue(string $langue):self
     {
         $this->langue = $langue;
@@ -295,8 +297,7 @@ class Livre {
         $req=MonPdo::getInstance()->prepare($texteReq);
         $req->setFetchMode(PDO::FETCH_OBJ); // attention pas de fetch_class car les colonnes ne correspondent pas à un objet auteur
         $req->execute();
-        $lesResultats=$req->fetchAll();
-        return $lesResultats;
+        return $req->fetchAll();
     }
 
     /**
@@ -308,11 +309,10 @@ class Livre {
     public static function findById(int $id) : Livre
     {
         $req=MonPdo::getInstance()->prepare("select * from livre where num= :id");
-        $req->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'Livre');
+        $req->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'models\Livre');
         $req->bindParam(':id',$id);
         $req->execute();
-        $leResultat=$req->fetch();
-        return $leResultat;
+        return $req->fetch();
     }
     /**
      * Permet d'ajouter un livre dans la base de données
@@ -326,13 +326,13 @@ class Livre {
         values(:isbn, :titre, :prix, :editeur, :annee, :langue, :numAuteur, :numGenre)");
         $numAuteur=$livre->getAuteur()->getNum();
         $numGenre=$livre->getGenre()->getNum();
-        $isbn=$livre->getIsbn();        
-        $titre=$livre->getTitre();        
-        $prix=$livre->getPrix();        
-        $editeur=$livre->getEditeur();        
-        $annee=$livre->getAnnee();        
-        $langue=$livre->getLangue();               
-      
+        $isbn=$livre->getIsbn();
+        $titre=$livre->getTitre();
+        $prix=$livre->getPrix();
+        $editeur=$livre->getEditeur();
+        $annee=$livre->getAnnee();
+        $langue=$livre->getLangue();
+
         $req->bindParam(':isbn', $isbn);
         $req->bindParam(':titre', $titre);
         $req->bindParam(':prix', $prix);
@@ -341,8 +341,7 @@ class Livre {
         $req->bindParam(':langue', $langue);
         $req->bindParam(':numAuteur', $numAuteur);
         $req->bindParam(':numGenre', $numGenre);
-        $nb=$req->execute();
-        return $nb;
+        return $req->execute();
     }
 
     /**
@@ -354,10 +353,9 @@ class Livre {
     public static function delete(Livre $livre) : int
     {
         $req=MonPdo::getInstance()->prepare("delete from livre where num = :num");
-        $num=$auteur->getNum();
+        $num=$livre->getNum();
         $req->bindParam(':num', $num);
-        $nb=$req->execute();
-        return $nb;    
+        return $req->execute();
     }
 
     /**
@@ -370,13 +368,13 @@ class Livre {
     {
         $req=MonPdo::getInstance()->prepare("update livre set isbn = :isbn, titre= :titre, prix= :prix, editeur= :editeur, annee= :annee, langue= :langue,
         numAuteur= :numAuteur, numGenre= :numGenre where num = :num");
-        
+
         $num=$livre->getNum();
-        $isbn=$livre->getIsbn();        
-        $titre=$livre->getTitre();        
-        $prix=$livre->getPrix();        
-        $editeur=$livre->getEditeur();        
-        $annee=$livre->getAnnee();        
+        $isbn=$livre->getIsbn();
+        $titre=$livre->getTitre();
+        $prix=$livre->getPrix();
+        $editeur=$livre->getEditeur();
+        $annee=$livre->getAnnee();
         $langue=$livre->getLangue();
         $numAuteur=$livre->getAuteur()->getNum();
         $numGenre=$livre->getGenre()->getNum();
@@ -390,10 +388,12 @@ class Livre {
         $req->bindParam(':langue', $langue);
         $req->bindParam(':numAuteur', $numAuteur);
         $req->bindParam(':numGenre', $numGenre);
-        $nb=$req->execute();
-        return $nb;
+        return $req->execute();
     }
 
+    /**
+     * @return array
+     */
     public static function livreParGenre():array
     {
         $texteReq="select g.libelle, count(*) as 'nb' from livre l, genre g where l.numGenre=g.num group by g.num";
@@ -409,6 +409,9 @@ class Livre {
     }
 
 
+    /**
+     * @return int
+     */
     public static function nombreLivres():int
     {
         $texteReq="select count(*) as 'nb' from livre";
