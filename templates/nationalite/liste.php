@@ -2,11 +2,11 @@
 
     <div class="row pt-3">
         <div class="col-9"> <h2>Liste des nationalités</h2></div>
-        <div class="col-3"> <a href="app.php?uc=nationalites&action=add" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> Créer une nationalité</a></div>
+        <div class="col-3"> <a href="index.php?uc=nationalites&action=add" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> Créer une nationalité</a></div>
     </div>
 
 
-    <form action="app.php?uc=nationalites&action=list" method="post" class="border border-primary rounded p-3 mt-3 mb-3">
+    <form action="index.php?uc=nationalites&action=list" method="post" class="border border-primary rounded p-3 mt-3 mb-3">
         <div class="row">
             <div class="col">
                 <input type='text'  class='form-control' id='libelle' value="<?php echo $libelle; ?>" placeholder='Saisir le libellé' name='libelle'>
@@ -46,8 +46,8 @@
             echo" <td class='col-md-4' >$nationalite->libNation</td>";
             echo" <td class='col-md-4' >$nationalite->libContinent</td>";
             echo" <td class='col-md-2'>
-                   <a href='app.php?uc=nationalites&action=update&num={$nationalite->numero}' class='btn btn-warning'> <i class='fas fa-edit'></i></a>
-                   <a href='#modal-delete' data-toggle='modal' data-message='Êtes-vous sur de supprimer la nationalité ?' data-delete='app.php?uc=nationalites&action=delete&num={$nationalite->numero}' class='btn btn-danger'> <i class='fas fa-trash'></i></a>
+                   <a href='index.php?uc=nationalites&action=update&num={$nationalite->numero}' class='btn btn-warning'> <i class='fas fa-edit'></i></a>
+                   <a href='#modal-delete' data-toggle='modal' data-message='Êtes-vous sur de supprimer la nationalité ?' data-delete='index.php?uc=nationalites&action=delete&num={$nationalite->numero}' class='btn btn-danger'> <i class='fas fa-trash'></i></a>
                    </td>";
             echo"</tr>";
             //supprimerNationalite.php?num=$nationalite->num

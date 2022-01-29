@@ -1,6 +1,6 @@
 <div class="container pt-5 mt-5">
     <h2 class='pt-3 text-center'><?php echo $action ?> un livre</h2>
-    <form action="app.php?uc=livres&action=validerForm" method="post"
+    <form action="index.php?uc=livres&action=validerForm" method="post"
         class="col-md-8 offset-md-2 border border-primary p-5 rounded">
 
         <div class="row">
@@ -71,7 +71,7 @@
 
         <input type="hidden" id="num" name="num" value="<?php if($action == "Modifier") {echo $leLivre->getNum();} ?>">
         <div class="row mt-5">
-            <div class="col"> <a href="app.php?uc=livres&action=list" class='btn btn-warning btn-block'>Revenir
+            <div class="col"> <a href="index.php?uc=livres&action=list" class='btn btn-warning btn-block'>Revenir
                     à la liste</a> </div>
             <div class="col"><button type='submit' class='btn btn-success btn-block'> <?php echo $action ?> </button>
             </div>

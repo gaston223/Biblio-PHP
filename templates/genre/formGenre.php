@@ -1,6 +1,6 @@
 <div class="container pt-5 mt-5">
     <h2 class='pt-3 text-center'><?php echo $mode ?> un genre</h2>
-    <form action="app.php?uc=genres&action=valideForm" method="post"
+    <form action="index.php?uc=genres&action=valideForm" method="post"
         class="col-md-6 offset-md-3 border border-primary p-3 rounded">
         <div class="form-group">
             <label for='libelle'> Libellé </label>

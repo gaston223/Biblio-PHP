@@ -4,11 +4,11 @@
         <div class="col-9">
             <h2>Liste des auteurs</h2>
         </div>
-        <div class="col-3"><a href="app.php?uc=auteurs&action=add" class='btn btn-success'><i class="fas fa-plus-circle"></i> Créer un auteur</a> </div>
+        <div class="col-3"><a href="index.php?uc=auteurs&action=add" class='btn btn-success'><i class="fas fa-plus-circle"></i> Créer un auteur</a> </div>
 
     </div>
 
-    <form id="formRecherche" action="app.php?uc=auteurs&action=list" method="post" class="border border-primary rounded p-3 mt-3 mb-3">
+    <form id="formRecherche" action="index.php?uc=auteurs&action=list" method="post" class="border border-primary rounded p-3 mt-3 mb-3">
         <div class="row">
             <div class="col">
                 <input type="text" class='form-control' id='nom'  value="<?php echo $nom; ?>" placeholder='Nom ' name='nom'>
@@ -53,8 +53,8 @@
                 echo "<td class='col-md-3'>$auteur->prenom</td>";
                 echo "<td class='col-md-2'>$auteur->libelle</td>";
                 echo "<td class='col-md-2'>
-            <a href='app.php?uc=auteurs&action=update&num=" . $auteur->numero . "' class='btn btn-primary'><i class='fas fa-pen'></i></a>
-            <a href='#modal-delete' data-toggle='modal' data-message='Voulez vous supprimer cet auteur ?' data-delete='app.php?uc=auteurs&action=delete&num=" . $auteur->numero . "' class='btn btn-danger'><i class='far fa-trash-alt'></i></a>
+            <a href='index.php?uc=auteurs&action=update&num=" . $auteur->numero . "' class='btn btn-primary'><i class='fas fa-pen'></i></a>
+            <a href='#modal-delete' data-toggle='modal' data-message='Voulez vous supprimer cet auteur ?' data-delete='index.php?uc=auteurs&action=delete&num=" . $auteur->numero . "' class='btn btn-danger'><i class='far fa-trash-alt'></i></a>
         </td>";
                 echo "</tr>";
             }

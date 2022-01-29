@@ -1,6 +1,6 @@
 <div class="container pt-5 mt-5">
     <h2 class='pt-3 text-center'><?php echo $mode ?> un auteur</h2>
-    <form action="app.php?uc=auteurs&action=validerForm" method="post" class="col-md-6 offset-md-3 border border-primary p-3 rounded">
+    <form action="index.php?uc=auteurs&action=validerForm" method="post" class="col-md-6 offset-md-3 border border-primary p-3 rounded">
         <div class="row">
             <div class="col">
                 <label for='nom'> nom </label>

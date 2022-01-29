@@ -52,20 +52,20 @@
                         <div class="card-header text-center h4">Statistiques générales</div>
                         <div class="card-body mt-5">
                             <h4 class="card-title text-center">
-                                <a href="app.php?uc=livres&action=list">
+                                <a href="index.php?uc=livres&action=list">
                                     <span class="badge badge-success"><?php echo \models\Livre::nombreLivres(); ?></span>
                                livres </a>
                             </h4>
                             <hr>
                             <h4 class="card-title text-center">
-                                <a href="app.php?uc=auteurs&action=list">
+                                <a href="index.php?uc=auteurs&action=list">
                                     <span class="badge badge-success"><?php echo \models\Auteur::nombreAuteurs(); ?></span>
                                     auteurs </a>
                             </h4>
                             <hr>
 
                             <h4 class="card-title text-center">
-                                <a href="app.php?uc=genres&action=list">
+                                <a href="index.php?uc=genres&action=list">
                                     <span class="badge badge-success"><?php echo \models\Genre::nombreGenres(); ?></span>
                                     genres</a>
                             </h4>
